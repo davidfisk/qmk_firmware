@@ -340,10 +340,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case TOG_DFLT:
             // toggles default layers
-            if (default_layer_state == 2) {
-                default_layer_set(1);
-            } else {
-                default_layer_set(2);
+            if (record->event.pressed) {
+                if (default_layer_state == 2) {
+                    default_layer_set(1);
+                } else {
+                    default_layer_set(2);
+                }
             }
             return false;
             break;
